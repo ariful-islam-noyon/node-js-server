@@ -17,7 +17,7 @@ http.createServer((req, res) => {
     // Routing
     if(req.url == "/api/students" && req.method == "GET"){
 
-        res.writeHead(200, {'Content-Type' : 'aplication/json'})
+        res.writeHead(200, {'Content-Type' : 'application/json'})
         res.end(students_json);
 
     }else if(req.url.match(/\/api\/students\/[0-9]{1,}/) && req.method == "GET"){
@@ -25,11 +25,11 @@ http.createServer((req, res) => {
         let id = req.url.split('/')[3];
         if(students_obj.find( stu => stu.id == id)){
 
-            res.writeHead(200, {'Content-Type' : 'aplication/json'})
+            res.writeHead(200, {'Content-Type' : 'application/json'})
             res.end(JSON.stringify(students_obj.find( stu => stu.id == id)));
 
         }else{
-            res.writeHead(200, {'Content-Type' : 'aplication/json'})
+            res.writeHead(200, {'Content-Type' : 'application/json'})
             res.end(JSON.stringify({
                Message : "Data Not Found"
            }));
@@ -56,7 +56,7 @@ http.createServer((req, res) => {
            writeFileSync('./data/db.json', JSON.stringify(students_obj))
         })
 
-        res.writeHead(200, {'Content-Type' : 'aplication/json'})
+        res.writeHead(200, {'Content-Type' : 'application/json'})
         res.end(JSON.stringify({
            Message : "Students Update Successfull"
        }));
@@ -68,7 +68,7 @@ http.createServer((req, res) => {
         let deletedData = students_obj.filter( (data) => data.id !=id)
         writeFileSync('./data/db.json', JSON.stringify(deletedData))
 
-        res.writeHead(200, {'Content-Type' : 'aplication/json'})
+        res.writeHead(200, {'Content-Type' : 'application/json'})
         res.end(JSON.stringify({
            Message : "Students Data Delete Successfull"
        }));
@@ -91,14 +91,14 @@ http.createServer((req, res) => {
             writeFileSync('./data/db.json', JSON.stringify(students_obj))
         })
 
-          res.writeHead(200, {'Content-Type' : 'aplication/json'})
+          res.writeHead(200, {'Content-Type' : 'application/json'})
             res.end(JSON.stringify({
                Message : "Students Data Edit Successfull"
            }));
            
 
         }else{
-            res.writeHead(200, {'Content-Type' : 'aplication/json'})
+            res.writeHead(200, {'Content-Type' : 'application/json'})
             res.end(JSON.stringify({
                Message : "Students Data Not Found"
            }));
@@ -106,7 +106,7 @@ http.createServer((req, res) => {
         
 
     } else{
-        res.writeHead(200, {'Content-Type' : 'aplication/json'})
+        res.writeHead(200, {'Content-Type' : 'application/json'})
         res.end(JSON.stringify({
             Error : "Invailid Data"
         }));
